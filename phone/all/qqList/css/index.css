@@ -1,0 +1,186 @@
+body{
+    margin:0
+} /* 遇到哪个标签，就清楚哪个标签的默认样式 */
+ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+h3{
+    margin:0;
+}
+p{
+    margin:0;
+}
+a{
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    /* 移动端，a标签按下时有高亮的阴影，所以要清掉，记得加webkit内核 */
+}
+mark{
+    background:none;
+}/* 默认的背景色要清掉 */
+body,
+html{
+    height:100%;
+    overflow:hidden;
+    position:relative;
+} /* IE10不兼容 overflow:hidden 所以要加上 position:relative;*/
+
+#header{
+    height:1.51rem;  /* 151px/100=1.51rem */
+    background:url("../img/head.jpg") no-repeat;
+    background-size: cover;  /* 为了适配，适应每个浏览器，怪异盒模型 */
+}
+#footer{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:1.62rem;   /* 162px/100=1.62rem;*/
+    background: url("../img/foot.jpg") no-repeat;
+    background-size: cover;
+}
+
+#main{   /* 尽量不要用id加样式，这个习惯方便但不好 */
+    position:absolute;
+    left:0;
+    right:0;
+    top:1.5rem;
+    bottom:1.62rem;
+    overflow: hidden;
+    background:#282828;
+} /* 用left、right撑开宽度，top、bottom撑开高度 */
+#swiper{
+    min-height:100%;
+    background: #fff;
+    position:relative;
+
+}
+.swiper{
+    width:20.18rem; /*10.8rem + 9.38rem  */
+    height:2.29rem;
+    -webkit-transform:translateX(-300px);
+    transform:translateX(-300px);
+
+}
+#list li{
+    width:10.8rem;
+    height:2.29rem;
+    border-bottom:1px solid #dedfe0;
+    background:#fff;
+}
+#list li.active{
+    background:#edfaff;
+}
+.view{
+    width:10.8rem;
+    float: left;
+    padding:.28rem .42rem;
+    box-sizing:border-box;
+} /* 怪异盒模型 0点几之类的要省略0  */
+.avatar{
+    width:1.75rem;
+    height:1.75rem;
+    float:left;
+    background: url("../img/faye.png") no-repeat center;
+    background-size:cover;  /* 为了让图片适应，用怪异盒模型，包含 */
+    border-radius: 50%;
+} /* 移动端不支持 border-radius: 50%; 最好用成一半 border-radius: 0.87rem;*/
+.info{
+    margin-left:.45rem;
+    float:left;
+    width:5rem;
+
+}
+.info h3{
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;  /* 强制不换行，出现省略号,超出隐藏 */
+    font:bold .55rem/1rem "宋体";
+} /* font: .55rem/1rem "宋体"; 加粗 字体大小、行高、字体 */
+.info p{
+    width:5rem;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;  /* 强制不换行，出现省略号,超出隐藏 */
+    font:.4rem/.6rem "宋体";
+}
+.aside mark{
+    float:right;
+    font:.36rem/.2rem "宋体";
+    background: #f74c31;
+    border-radius: .35rem;
+    padding:0.22rem;
+    color:#fff;
+    text-align: center;
+}
+.aside{
+    float:right;
+    width:2.5rem;
+
+}
+.aside time{
+    display: block;
+    margin-top:.17rem;
+    text-align: right;
+    font:.38rem/.8rem "宋体";
+}
+.btns{
+    width:9.38rem;
+    float:left;
+}
+.btns a{
+    float:left;
+    height:2.29rem;
+    font:.4rem/2.29rem "宋体";
+    color:#fff;
+    text-align: center;
+}
+.btns a:nth-of-type(1){
+    width:2.94rem;
+    background:#c7c7cd;
+}
+.btns a:nth-of-type(2){
+    width:3.5rem;
+    background:#ff9d09;
+}
+.btns a:nth-of-type(3){
+    width:2.94rem;
+    background:#ff3a30;
+}
+
+#load{
+    position:absolute;
+    left:0;
+    top:-2.4rem;
+    width:100%;
+    height:2.4rem;
+
+}
+
+#load .loadImg{
+    position: absolute;
+    left:1.5rem;
+    top:.1rem;
+    width:2.4rem;
+    height:2.4rem;
+    background:url("../img/a.png") no-repeat center;
+    background-size: cover;
+}
+#load .loadImg2{
+    display: none;
+    position: absolute;
+    left:4rem;
+    top:.95rem;
+    width:.5rem;
+    height:.5rem;
+    background:url("../img/timg.gif") no-repeat center;
+    background-size: cover;
+}
+.loadText{
+    display: block;
+    font:.4rem/2.4rem "宋体";
+    color:#fff;
+    text-align: center;
+}

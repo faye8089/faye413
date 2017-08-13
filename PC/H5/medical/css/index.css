@@ -1,0 +1,121 @@
+/*banner*/
+.banner{width:100%;overflow:hidden;height:4.25rem;position:relative;}
+.swiper-container1{ width: 100%;margin-top:0.3rem;}
+.swiper-container1 .swiper-slide {background-position: center;width:92%;height: 3.3rem;background-size: cover;border-radius: 0.1rem;overflow: hidden;}
+.swiper-pagination1{width:100%;position:absolute;left:0;bottom:0;height:0.46rem;font-size:0;}
+
+.swiper-pagination1 .swiper-pagination-bullet{width:0.16rem;height:0.16rem;background:#cad3e4;opacity: 1;border-radius: 50%;margin:0 0.08rem;}
+.swiper-pagination1 .swiper-pagination-bullet{width:0.16rem;height:0.16rem;background:#cad3e4;opacity: 1;border-radius: 50%;margin:0 0.08rem;}
+.swiper-pagination1 .swiper-pagination-bullet-active{background:#879ec2;}
+/*诊断菜单*/
+.menu{width:100%}
+.menu_list li{width:3.3rem;float:left;margin-right:0.3rem;height:1.5rem;background:#fff;margin-bottom:0.3rem;border-radius: 0.1rem;}
+.menu_list li:nth-of-type(2n){margin-right:0;}
+.menu_list li a{padding:0.25rem 0.3rem;display: block;}
+.menu_list li i{float:left;width:1rem;height:1rem;}
+.menu_list li .menu_1{background:url(../images/icon.png) 0 0 no-repeat;background-size: 6rem 6rem;}
+.menu_list li .menu_2{background:url(../images/icon.png) 0 -1.1rem no-repeat;background-size: 6rem 6rem;}
+.menu_list li .menu_3{background:url(../images/icon.png) 0 -2.2rem no-repeat;background-size: 6rem 6rem;}
+.menu_list li .menu_4{background:url(../images/icon.png) 0 -3.3rem no-repeat;background-size: 6rem 6rem;}
+.menu_list li .menu_text{margin-left:1.2rem;}
+.menu_list li .menu_text h6{margin:0.15rem 0 0.1rem;font-size:0.32rem;color:#333;}
+.menu_list li .menu_text p{font-size:0.24rem;color:#aaa;}
+
+/*热门医院*/
+.Hot_hospital{width:100%;margin-bottom:0.3rem;}
+.wrapper03{height:0.7rem;border-bottom:solid 1px #e8e8ed;overflow: hidden;width:100%;position:relative;}
+.wrapper03 .scroller {position:absolute}
+.wrapper03 .scroller li {height:100%;color:#333;float: left;line-height: 0.7rem;font-size: .28rem;text-align: center;width:77px;position:relative;}
+.wrapper03 .scroller li a{color:#333;display:block;}
+.wrapper03 .scroller li i{position:absolute;left:50%;width:0.8rem;height:2px;background: transparent;margin-left:-0.4rem;z-index:5;bottom:-1px;}
+.wrapper03 .scroller li.cur i{background:#1782ad;}
+.wrapper03 .scroller li.cur a{color:#1782ad;}
+
+.wrapper04{height:0.7rem;border-bottom:solid 1px #e8e8ed;overflow: hidden;width:100%;position:relative;}
+.wrapper04 .scroller {position:absolute}
+.wrapper04 .scroller li {height:100%;color:#333;float: left;line-height: 0.7rem;font-size: .28rem;text-align: center;width:77px;position:relative;}
+.wrapper04 .scroller li a{color:#333;display:block;}
+.wrapper04 .scroller li i{position:absolute;left:50%;bottom:-1px;width:0.8rem;height:2px;background: transparent;margin-left:-0.4rem;z-index:5;}
+.wrapper04 .scroller li.cur i{background:#1782ad;}
+.wrapper04 .scroller li.cur a{color:#1782ad;}
+.hospitalCont{padding:0 0.3rem;}
+.hospitalItem{display:none;}
+.hospital_list{width:100%;}
+.hospital_list li{border-bottom:solid 1px #e8e8ed;padding:0.3rem 0;height:1.2rem;}
+.hospitalItem .hospital_list li:last-child{border-bottom:none;}
+.hospital_list li a{display: block;}
+.hospital_list .hos_img{float:left;width:1.9rem;height:1.2rem;border-radius: 0.1rem;overflow: hidden;}
+.hospital_list .info_right{height:1.2rem;float:right;width:4.1rem;}
+.hospital_list .info_right h6{height:0.5rem;line-height: 0.5rem;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;color:#333;font-size:0.32rem;margin-bottom:0.25rem;}
+.hospital_list .info_right p{height:0.36rem;overflow: hidden;}
+.hospital_list .info_right p em{height:0.32rem;line-height:0.32rem;border:solid 1px #aaa;color:#aaa;font-size:0.24rem;padding: 0 0.2rem;float:left;border-radius: 0.16rem;margin-right:0.1rem;}
+
+/*常见科室*/
+.nurses_menu{width:100%;margin-bottom:0.3rem;}
+.bg_cont{background:#fff;border-radius:0.1rem;}
+.contTitle{padding:0.3rem;}
+.contTitle h6{float:left;font-size:0.32rem;color:#333;margin-right:0.2rem;}
+.contTitle h6 i{width:0.08rem;height:0.32rem;background:#1782ad;border-radius: 0.05rem;display: inline-block;vertical-align: middle;margin:-0.05rem 0.1rem 0 0;}
+.contTitle span{float:left;font-size:0.24rem;color:#aaa;vertical-align: bottom;padding-top: 0.1rem;}
+.contTitle a{float:right;font-size:0.24rem;color:#888;vertical-align: middle;padding-top:0.05rem;}
+.contTitle a em{font-family: consolas;font-size:0.28rem;}
+.menu_nur{padding:0.5rem 0.2rem 0;}
+.menu_nur li{text-align: center;width:25%;float:left;margin-bottom:0.58rem;}
+.menu_nur li a{display: block;}
+.menu_nur li  i{width:1rem;height:1rem;display: inline-block;} 
+.menu_nur li .menu_5{background:url(../images/icon.png) 0 -4.4rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_6{background:url(../images/icon.png) -1.1rem 0 no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_7{background:url(../images/icon.png) -1.1rem -1.1rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_8{background:url(../images/icon.png) -1.1rem -2.2rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_9{background:url(../images/icon.png) -1.1rem -3.3rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_10{background:url(../images/icon.png) -1.1rem -4.4rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_11{background:url(../images/icon.png) -2.2rem 0 no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_12{background:url(../images/icon.png) -2.2rem -1.1rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_13{background:url(../images/icon.png) -2.2rem -2.2rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_14{background:url(../images/icon.png) -2.2rem -3.3rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_15{background:url(../images/icon.png) -2.2rem -4.4rem no-repeat;background-size: 6rem 6rem;}
+.menu_nur li .menu_16{background:url(../images/icon.png) -3.3rem 0 no-repeat;background-size: 6rem 6rem;}
+.menu_nur li a span{font-size:0.24rem;color:#333;display: block;line-height:0.6rem;}
+
+/*德安热点*/
+.hospital_list .info_por{height:1.2rem;float:right;width:4.1rem;}
+.hospital_list .info_por h6{height:0.44rem;line-height: 0.44rem;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;color:#333;font-size:0.32rem;margin-bottom:0.14rem;}
+.hospital_list .info_por p{line-height:0.32rem;color:#aaa;font-size:0.24rem;float:left;overflow : hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

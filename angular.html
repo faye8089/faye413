@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>angularJS的世界</title>
+  <link rel="shortcut icon" href="images/faye_favicon.ico" />
+  <!--plugs-->
+  <link rel="stylesheet"  href="plugs/css/bootstrap.min.css"/>
+  <link rel="stylesheet"  href="plugs/css/font/iconfont.css"/> 
+  <link rel="stylesheet"  href="plugs/css/swiper.min.css"/> 
+
+  <link rel="stylesheet" href="css/base.css"/>
+	<!--[if IE 6]>
+		<script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+		<script type="text/javascript" src="js/ie6Fixpng.js"></script>
+	<![endif]-->
+	 <style>
+		 [ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}
+	 </style>
+ </head>
+ <body ng-controller="contAngual">
+ <div id="fayeIndex">
+	 <nav class="navbar navbar-default" >
+		 <div class="container">
+			 <div class="navbar-header">
+				 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					 <span class="sr-only">Toggle navigation</span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+				 </button>
+				 <a class="navbar-brand" href="#">
+					 <img src="images/faye.png" title="LOGO" id="logo"/>
+				 </a>
+			 </div>
+			 <div class="collapse navbar-collapse"  id="bs-example-navbar-collapse-1">
+				 <ul class="nav navbar-nav">
+					 <li class="active">
+						 <a href="#">主页
+							 <span class="sr-only">(current)</span>
+						 </a>
+					 </li>
+					 <li class="myLi">
+						 <a href="#">笔记</a>
+						 <ul class="nav-small">
+							 <li>
+								 <a href="javascript:;">笔记1</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">笔记2</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">笔记3</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">笔记4</a>
+							 </li>
+						 </ul>
+					 </li>
+					 <li class="myLi">
+						 <a href="#">特效案例</a>
+						 <ul class="nav-small">
+							 <li>
+								 <a href="javascript:;">特效案例1</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">特效案例2</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">特效案例3</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">特效案例4</a>
+							 </li>
+						 </ul>
+					 </li>
+					 <li class="myLi">
+						 <a href="#">前端相关</a>
+						 <ul class="nav-small">
+							 <li>
+								 <a href="javascript:;">前端相关1</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">前端相关2</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">前端相关3</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">前端相关4</a>
+							 </li>
+						 </ul>
+					 </li>
+					 <li class="myLi">
+						 <a href="#">软件分享</a>
+						 <ul class="nav-small">
+							 <li>
+								 <a href="javascript:;">软件分享1</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">软件分享2</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">软件分享3</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">软件分享4</a>
+							 </li>
+						 </ul>
+					 </li>
+					 <li class="myLi">
+						 <a href="#">生活随笔</a>
+						 <ul class="nav-small">
+							 <li>
+								 <a href="javascript:;">生活随笔1</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">生活随笔2</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">生活随笔3</a>
+							 </li>
+							 <li>
+								 <a href="javascript:;">生活随笔4</a>
+							 </li>
+						 </ul>
+					 </li>
+					 <li class="myLi">
+						 <ul class="dropdown-menu">
+							 <li><a href="#">Action</a></li>
+							 <li><a href="#">Another action</a></li>
+							 <li><a href="#">Something else here</a></li>
+							 <li role="separator" class="divider"></li>
+							 <li><a href="#">Separated link</a></li>
+							 <li role="separator" class="divider"></li>
+							 <li><a href="#">One more separated link</a></li>
+						 </ul>
+					 </li>
+				 </ul>
+				 <form class="navbar-form navbar-right">
+					 <div class="form-group">
+						 <input type="text" class="form-control" placeholder="Search">
+					 </div>
+					 <button type="submit" class="btn btn-primary">搜索</button>
+				 </form>
+			 </div>
+		 </div>
+	 </nav>
+ </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide gb399" >
+			<h2 class="mtb40">用angular实现留言板功能</h2>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10">
+						<div id="ng-message" >
+							<div class="ng-message-box" >
+                                <form role="form">
+									<div class="input-group mt20">
+									    <span class="input-group-addon" for="theme">主&nbsp;&nbsp;&nbsp;题</span>
+									    <input type="text" class="form-control" placeholder="请输入主题" id="theme" ng-model="theme">
+									</div>
+									<div class="input-group mt20">
+									    <span class="input-group-addon" for="username">用户名</span>
+									    <input type="text" class="form-control" id="username" placeholder="请输入用户名" ng-model="username" >
+									</div>	
+									<div class="input-group mt20">
+									    <span class="input-group-addon" for="cont">内&nbsp;&nbsp;&nbsp;容</span>
+									    <textarea class="form-control"  rows="5" cols="30" placeholder="请输入您的留言" ng-model="cont" id="cont"></textarea>
+									</div>									
+									<div class="from-group clearfix mt20">				<button type="button" class="btn btn-primary pull-right" ng-click="add()">添加留言</button>
+										<button type="button" class="btn btn-primary pull-right mr20" ng-click="data.length=0"  ng-show="data.length" ng-cloak>删除所有留言</button>
+									</div>
+								</form>	
+								<strong ng-show="data.length==0">暂无留言</strong>
+								<ul class="message-lists" ng-show="data.length!=0" ng-cloak>
+									<li class="clearfix" ng-repeat="item in data">
+										<span ng-bind="item.theme"></span>
+										<span ng-bind="item.username"></span>
+										<span ng-bind="item.cont"></span>
+										<a href="javascript:;" class="del" ng-click="remove($index)">{{item.del}}</a>
+									</li>
+								</ul>								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="swiper-slide gb969">
+			<h2 class="mtb40">用angular实现购物车功能</h2>
+			<div id="shoppingCar">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-4 col-md-4"></div>
+						<div class="col-lg-8 col-md-8 shoppingCar">					
+								<div class="row">
+									<div class="col-lg-3 col-md-3">商品名称</div>
+									<div class="col-lg-3 col-md-3">单价</div>
+									<div class="col-lg-3 col-md-3">数量</div>
+									<div class="col-lg-3 col-md-3">价格</div>
+								</div>
+
+								<div class="row" ng-repeat="item in shoppingCar">
+									<div class="col-lg-3 col-md-3">{{item.name}}</div>
+									<div class="col-lg-3 col-md-3">{{item.price|currency:'￥'}}</div>
+									<div class="col-lg-3 col-md-3">
+										<a class="change-count" href="javascript:;" ng-click="increase(item)">+</a>
+										<a class="change-count" href="javascript:;">{{item.count}}</a>
+										<a class="change-count" href="javascript:;" ng-click="reduce(item)">-</a>
+									</div>								
+									<div class="col-lg-3 col-md-3">总价： &nbsp;&nbsp;&nbsp;{{item.price*item.count|currency:'￥'}}</div>
+								</div>							
+								<div class="row">
+									<div class="col-lg-12 col-md-12">总计价：{{sum()|currency:'￥'}}</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="swiper-slide gb878">
+			<h2 class="mtb40">用angular实现Ajax数据交互</h2>
+			<div id="ajaxDate">
+				<div class="container">
+					<div class="row"></div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <div class="swiper-pagination"></div>
+  </div>
+ 
+
+  <!--plugs-->
+  
+  <script src="plugs/js/jquery.min.js"></script>
+  <script src="plugs/js/bootstrap.min.js"></script>
+  <script src="plugs/js/swiper.min.js"></script>
+  <script src="plugs/js/angular/angular.js"></script>
+
+
+  <script src="js/contAngual.js"></script>
+
+
+
+  
+  <script>
+    new Swiper('.swiper-container',{
+        direction:'vertical',
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        mousewheelControl: true,
+        keyboardControl:true
+    });
+	
+
+</script>
+ </body>
+</html>
+

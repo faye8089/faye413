@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>vueJs的世界</title>
+  <link rel="shortcut icon" href="images/faye_favicon.ico" />
+  <!--plugs-->
+  <link rel="stylesheet"  href="plugs/css/bootstrap.min.css"/>
+  <link rel="stylesheet"  href="plugs/css/font/iconfont.css"/> 
+  <link rel="stylesheet"  href="plugs/css/swiper.min.css"/>
+
+
+  <link rel="stylesheet" href="css/base.css"/>
+	<!--[if IE 6]>
+		<script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+		<script type="text/javascript" src="js/ie6Fixpng.js"></script>
+	<![endif]-->
+     <style>
+         [v-cloak]{display:none;}
+         .list-group-item{height:40px; }
+         .list-group-item>span{float:left;  text-align:left; }
+         .list-group-item>span:nth-of-type(1),.list-group-item>span:nth-of-type(2){
+            width:40%;
+             overflow: hidden;
+             text-overflow: ellipsis;
+             white-space: nowrap;
+         }
+         .list-group-item>span:nth-of-type(3){
+             width:200px;
+             color:#000;
+             text-align: right;
+         }
+     </style>
+  
+ </head>
+
+ <body>
+ <div id="app">
+     <div id="fayeIndex">
+        <nav class="navbar navbar-default" >
+         <div class="container">
+             <div class="navbar-header">
+                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
+                 <a class="navbar-brand" href="#">
+                     <img src="images/faye.png" title="LOGO" id="logo"/>
+                 </a>
+             </div>
+             <div class="collapse navbar-collapse"  id="bs-example-navbar-collapse-1">
+                 <ul class="nav navbar-nav">
+                     <li class="active">
+                         <a href="#">主页
+                             <span class="sr-only">(current)</span>
+                         </a>
+                     </li>
+                     <li class="myLi">
+                         <a href="#">笔记</a>
+                         <ul class="nav-small">
+                             <li>
+                                 <a href="javascript:;">笔记1</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">笔记2</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">笔记3</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">笔记4</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="myLi">
+                         <a href="#">特效案例</a>
+                         <ul class="nav-small">
+                             <li>
+                                 <a href="javascript:;">特效案例1</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">特效案例2</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">特效案例3</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">特效案例4</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="myLi">
+                         <a href="#">前端相关</a>
+                         <ul class="nav-small">
+                             <li>
+                                 <a href="javascript:;">前端相关1</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">前端相关2</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">前端相关3</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">前端相关4</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="myLi">
+                         <a href="#">软件分享</a>
+                         <ul class="nav-small">
+                             <li>
+                                 <a href="javascript:;">软件分享1</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">软件分享2</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">软件分享3</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">软件分享4</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="myLi">
+                         <a href="#">生活随笔</a>
+                         <ul class="nav-small">
+                             <li>
+                                 <a href="javascript:;">生活随笔1</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">生活随笔2</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">生活随笔3</a>
+                             </li>
+                             <li>
+                                 <a href="javascript:;">生活随笔4</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="myLi">
+                         <ul class="dropdown-menu">
+                             <li><a href="#">Action</a></li>
+                             <li><a href="#">Another action</a></li>
+                             <li><a href="#">Something else here</a></li>
+                             <li role="separator" class="divider"></li>
+                             <li><a href="#">Separated link</a></li>
+                             <li role="separator" class="divider"></li>
+                             <li><a href="#">One more separated link</a></li>
+                         </ul>
+                     </li>
+                 </ul>
+                 <form class="navbar-form navbar-right" >
+                     <div class="form-group positin-re">
+                         <input type="text" class="form-control" placeholder="Search-VUE" v-model="query"  @keyup="search($event)" @keydown.down="down" @keydown.up.prevent="up"  >
+                         <ul class="list-grop positin-ab" v-cloak  >
+                             <li class="list-group-item" v-for="(data,key) in datas" :class="{active:index==key}"  @mouseover="hoverchange(key)" @click="textinpt">{{data}}</li>
+                         </ul>
+                     </div>
+                     <button type="submit" class="btn btn-primary" @click="jump(key)">搜索</button>
+                 </form>
+             </div>
+         </div>
+     </nav>
+     </div>
+      <div class="swiper-container"  >
+        <div class="swiper-wrapper" >
+            <div class="swiper-slide" style="background: #399;font-size:20px; text-align: left;">
+                <h2 class="text-center">用VUE实现留言板功能</h2>
+                <div class="row">
+                    <div id="leave">
+                        <!--<div>{{Date.now()}}</div>-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form role="form">
+                                        <div class="form-group">
+                                             <label for="title" class="control-label">标题</label>
+                                            <input type="text" class="form-control" id="title" v-model="title"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">内容</label>
+                                            <textarea class="form-control" v-model="content"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-primary" @click="leave">添加留言</button>
+                                        </div>
+                                    </form>
+                                    <ul class="list-group" v-cloak>
+                                        <li class="list-group-item" v-for="item in lists">
+                                            <span v-color="msg" >{{item.title}}</span>
+                                            <span v-colorCont="cont">{{item.content}}</span>
+                                            <span>{{item.time | date}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="swiper-slide" style="background: #ff7e72">slider2</div>
+            <div class="swiper-slide" style="background: #b8ff78">slider3</div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+ </div>
+
+  <!--plugs-->
+  
+  <script src="plugs/js/jquery.min.js"></script>
+  <script src="plugs/js/bootstrap.min.js"></script>
+  <script src="plugs/js/swiper.min.js"></script>
+
+ <script src="plugs/js/vue/vue2.0.js"></script>
+ <script src="plugs/js/vue/vue-resource.js"></script>
+
+
+  <script src="js/index.js"></script>
+  <script src="js/contVue.js"></script>
+
+  <script>
+     $(window).ready(function(){
+         var $oH=$(document).height();
+         $('.swiper-wrapper').css({
+             "height":$oH-50
+
+         })
+
+     });
+    new Swiper('.swiper-container',{
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        mousewheelControl: true,
+        keyboardControl:true
+    });
+
+</script>
+ <script>
+     Vue.directive('color',function(el,binding){
+         el.style.color=binding.value;
+     });
+
+     Vue.directive('colorcont',function(el,binding){
+         el.style.color=binding.value;
+     });
+
+
+     Vue.filter('date',function (input){
+         var d=new Date(input);
+         var strDate=d.getFullYear()+'-'+toDub(d.getMonth()+1)+'-'+toDub(d.getDate())+' '+toDub(d.getHours())+':'+toDub(d.getMinutes())+':'+toDub(d.getSeconds());
+         return strDate;
+     });
+
+     function toDub(n)
+     {
+         return n<10 ? '0'+n : ''+n;
+     }
+
+
+     var vm=new Vue({
+         el:'#leave',
+         data:{
+             title:'',
+             content:'',
+             lists:[
+                 {title:'努力就会有收获',content:'你必须比任何人努力100倍',time:1494925115603},
+                 {title:'没事要解决点bug',content:'遇到问题就解决问题，问题总会解决的。加油，不要放弃',time:1494925144804}
+             ],
+             msg:'red',
+             cont:'blue'
+         },
+         methods:{
+             leave:function(){
+                 this.lists.push({
+                     title:this.title,
+                     content:this.content,
+                     time:Date.now()
+                 });
+                 this.title=this.content='';
+             }
+         }
+     });
+ </script>
+
+ </body>
+</html>

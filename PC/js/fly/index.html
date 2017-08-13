@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>来来去去</title>
+<style>
+* { margin:0; padding:0; }
+ul { width:510px; height:510px; border:1px solid #ccc; margin:50px auto; }
+li { list-style:none; float:left; width:150px; height:150px; background:#ccc; line-height:150px; text-align:center; font-size:80px; margin:10px; }
+
+input { position:absolute; top:50px; left:100px; width:100px; height:40px; opacity:1 }
+</style>
+<script src="move_new.js"></script>
+<script>
+	window.onload=function(){
+		var oBtn=document.getElementById('btn');
+		var aLi=document.getElementsByTagName('li');	
+		//布局转换
+		
+		var aPos=[];
+		for(var i=0; i<aLi.length; i++)
+		{
+			aPos.push({
+				left:aLi[i].offsetLeft,
+				top:aLi[i].offsetTop	
+			});
+		}	
+		
+		for(var i=0; i<aPos.length; i++)
+		{
+			aLi[i].style.position='absolute';
+			aLi[i].style.left=aPos[i].left+'px';
+			aLi[i].style.top=aPos[i].top+'px';
+			aLi[i].style.margin=0;
+		}	
+		var bFlag=false;
+		oBtn.onclick=function(){
+			if(bFlag)return;
+			bFlag=true;
+			var n=0;
+			var timer=setInterval(function(){
+				(function(index){
+				move(aLi[n],{left:0,top:0,width:0,height:0,fontSize:0, opacity:0,lineHeight:0},{
+					complete:function(){
+						if(index==aLi.length-1)
+						{
+							end();
+						}	
+					}
+					});
+				})(n);
+				n++;
+				if(n==aLi.length)
+				{
+					clearInterval(timer);
+				}	
+			},100);	
+		};
+		function end()
+		{
+			for(var i=0; i<aLi.length; i++)
+			{
+				aLi[i].style.background='#666';
+			}	
+			
+			var n=aLi.length-1;
+			var timer=setInterval(function(){
+				(function(index){
+				move(aLi[n],{width:150,height:150,left:aPos[n].left,top:aPos[n].top,opacity:1,lineHeight:150,fontSize:80},{
+					complete:function(){
+							if(index==0)
+							{
+								bFlag=false;
+							}
+					}
+					});
+				})(n);
+				n--;
+				if(n<0)
+				{
+					clearInterval(timer);
+				}
+			},300);
+		}
+	};
+</script>
+</head>
+
+<body>
+	<input type="button" value="走起" id="btn" />
+	<ul>
+		<li>0</li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+	</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

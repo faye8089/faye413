@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册 | register</title>
+    <link rel="stylesheet" href="plugs/css/bootstrap.css">
+    <style>
+        *{margin:0; padding:0;}
+        input{outline:none; border:none;}
+        .container{margin:50px auto;}
+        .mb30{ height:60px; line-height:60px; margin:0;}
+        .pd30{padding:30px;}
+        .form-group span{height:30px; line-height:30px; color:red;}
+        .error{ border: 1px solid red;}
+        .ok{ border: 1px solid blue;}
+
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-3 col-lg-6">
+                <h3 class="text-center mb30 bg-primary">欢迎进入注册页面</h3>
+                <form class="form-horizontal bg-info pd30" id="formBox">
+                    <div class="form-group">
+                        <label for="Name" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="name" id="Name" placeholder="请输入名字" err_tip="*请填写中文" >
+                        </div>
+                        <div class="col-sm-4">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="col-sm-2 control-label">年龄</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="age" id="age" placeholder="请输入年龄" err_tip="*您太嫩了，太老了">
+                        </div>
+                        <div class="col-sm-4">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email" class="col-sm-2 control-label">邮箱</label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" name="email" id="Email" placeholder="Email" err_tip="*邮箱格式错了">
+                        </div>
+                        <div class="col-sm-4">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Tel" class="col-sm-2 control-label">电话</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="tel" id="Tel" placeholder="请输入电话" err_tip="*座机格式错了">
+                        </div>
+                        <div class="col-sm-4">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="qq" class="col-sm-2 control-label">QQ</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="qq"  id="QQ" placeholder="请输入QQ" err_tip="*请填写正确的QQ">
+                        </div>
+                        <div class="col-sm-4">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control"  name="password" id="password" placeholder="请输入密码" err_tip="请输入密码">
+                        </div>
+                        <div class="col-sm-4">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="repassword" class="col-sm-2 control-label">确认密码</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" name="repassword" id="repassword" placeholder="请确认密码" err_tip="请确认密码">
+                        </div>
+                        <div class="col-sm-4">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 记住密码
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-3">
+                            <button type="submit"  class="btn btn-primary">注册</button>
+                        </div>
+                        <div class="col-sm-offset-1 col-sm-3">
+                            <button type="reset" class="btn btn-primary" >重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--plugs-->
+    <script src="plugs/js/jquery.js"></script>
+    <script src="plugs/js/bootstrap.js"></script>
+
+    <script src="js/validate.js"></script>
+    <script>
+        window.onload=function(){
+             var re=null;
+             validate('formBox')
+        };
+    </script>
+</body>
+</html>

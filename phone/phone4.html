@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>新闻列表</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+        html,body{
+            height:100%;
+            overflow-x:hidden;
+        }
+        .wrap{
+            height:100%;
+        }
+        .wrap header,.wrap footer{
+            height:40px;
+            line-height: 40px;
+            background: #399;
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+
+        }
+        .wrap footer{
+            width:100%;
+            position:fixed;
+            bottom: 0;
+            left: 0;
+        }
+        .news{
+            width:400%;
+            overflow: hidden;
+        }
+        .news dl{
+            float: left;
+            width:25%;
+        }
+        .news dl dt{
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            background: -webkit-linear-gradient(#ccc,#999);
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 4px #000;
+        }
+        .news dl dd{
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            border-bottom: 1px dashed #000;
+        }
+
+        .refresh{
+            text-align: center;
+            height:0;
+            overflow: hidden;
+        }
+        .refresh img{
+            vertical-align: middle;
+        }
+        .refresh span{
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            var oNews=document.querySelector('.news');
+            var aDl=oNews.children;
+            var oRef=document.querySelector('.refresh');
+            var oSpan=document.querySelector('.refresh span');
+
+            var dir='';
+            var x=0;
+            var y=0;
+            var iNow=0;
+
+            oNews.addEventListener('touchstart',function(ev){
+                oNews.style.WebkitTransition='none';
+                oRef.style.WebkitTransition='none';
+                var downX=ev.targetTouches[0].pageX;
+                var downY=ev.targetTouches[0].pageY;
+
+                var disX=downX-x;
+                var disY=downY-y;
+
+                function fnMove(ev){
+                    if(dir){
+                        if(dir=='lr'){
+                            x=ev.targetTouches[0].pageX-disX;
+                            oNews.style.WebkitTransform='translateX('+x+'px)';
+                        }
+                        if(dir=='t2b'){
+                            //下拉刷新
+                            y=ev.targetTouches[0].pageY-disY;
+                            if(y>60){
+                                y=60;
+                                oSpan.innerHTML='释放更新';
+                            }
+                            oRef.style.height=y+'px';
+                        }
+                    }else{
+                        if(Math.abs(ev.targetTouches[0].pageX-downX)>20){
+                            dir='lr';
+                        }else if(ev.targetTouches[0].pageY-downY>20){
+                            dir='t2b';
+                        }
+                    }
+                    ev.preventDefault();
+                }
+                function fnEnd(ev){
+                    document.removeEventListener('touchmove',fnMove,false);
+                    document.removeEventListener('touchend',fnEnd,false);
+
+                    if(dir=='lr'){
+                        var upX=ev.changedTouches[0].pageX;
+                        if(Math.abs(upX-downX)>50){
+                            if(upX<downX){
+                                iNow++;
+                                if(iNow==aDl.length)iNow=aDl.length-1;
+                            }else{
+                                iNow--;
+                                if(iNow<0)iNow=0;
+                            }
+                        }
+                        x=-iNow*aDl[0].offsetWidth;
+                        oNews.style.WebkitTransition='.4s all ease';
+                        oNews.style.WebkitTransform='translateX('+x+'px)';
+                    }else if(dir=='t2b'){
+                        y=0;
+                        oRef.style.WebkitTransition='.4s all ease';
+                        oRef.style.height=y+'px';
+
+                        setTimeout(function(){
+                            oSpan.innerHTML='下拉刷新';
+                        },400);
+                    }
+                    dir='';
+                }
+                document.addEventListener('touchmove',fnMove,false);
+                document.addEventListener('touchend',fnEnd,false);
+            },false);
+        },false);
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <header>仿手机列表</header>
+        <section>
+            <div class="refresh">
+                <img src="images/roller.gif" alt=""/>
+                <span>下拉刷新</span>
+            </div>
+            <div class="news">
+                <dl>
+                    <dt>政治新闻</dt>
+                    <dd>1政治新闻11111</dd>
+                    <dd>2政治新闻22222</dd>
+                    <dd>3政治新闻33333</dd>
+                    <dd>4政治新闻44444444</dd>
+                    <dd>5政治新闻55555</dd>
+                    <dd>6政治新闻666666</dd>
+                    <dd>7政治新闻777777</dd>
+                    <dd>8政治新闻8888888</dd>
+                    <dd>9政治新闻9999999</dd>
+                    <dd>11政治新闻1111</dd>
+                    <dd>22政治新闻2222</dd>
+                    <dd>33政治新闻3333</dd>
+                    <dd>44政治新闻4444444</dd>
+                    <dd>55政治新闻5555</dd>
+                    <dd>66政治新闻66666</dd>
+                    <dd>77政治新闻77777</dd>
+                    <dd>88政治新闻888888</dd>
+                    <dd>99政治新闻999999</dd>
+                </dl>
+                <dl>
+                    <dt>娱乐新闻</dt>
+                    <dd>1娱乐新闻11111</dd>
+                    <dd>2娱乐新闻22222</dd>
+                    <dd>3娱乐新闻33333</dd>
+                    <dd>4娱乐新闻44444444</dd>
+                    <dd>5娱乐新闻55555</dd>
+                    <dd>6娱乐新闻666666</dd>
+                    <dd>7娱乐新闻777777</dd>
+                    <dd>8娱乐新闻8888888</dd>
+                    <dd>9娱乐新闻9999999</dd>
+                    <dd>11娱乐新闻1111</dd>
+                    <dd>22娱乐新闻2222</dd>
+                    <dd>33娱乐新闻3333</dd>
+                    <dd>44娱乐新闻4444444</dd>
+                    <dd>55娱乐新闻5555</dd>
+                    <dd>66娱乐新闻66666</dd>
+                    <dd>77娱乐新闻77777</dd>
+                    <dd>88娱乐新闻888888</dd>
+                    <dd>99娱乐新闻999999</dd>
+                </dl>
+                <dl>
+                    <dt>体育新闻</dt>
+                    <dd>1体育新闻11111</dd>
+                    <dd>2体育新闻22222</dd>
+                    <dd>3体育新闻33333</dd>
+                    <dd>4体育新闻44444444</dd>
+                    <dd>5体育新闻55555</dd>
+                    <dd>6体育新闻666666</dd>
+                    <dd>7体育新闻777777</dd>
+                    <dd>8体育新闻8888888</dd>
+                    <dd>9体育新闻9999999</dd>
+                    <dd>11体育新闻1111</dd>
+                    <dd>22体育新闻2222</dd>
+                    <dd>33体育新闻3333</dd>
+                    <dd>44体育新闻4444444</dd>
+                    <dd>55体育新闻5555</dd>
+                    <dd>66体育新闻66666</dd>
+                    <dd>77体育新闻77777</dd>
+                    <dd>88体育新闻888888</dd>
+                    <dd>99体育新闻999999</dd>
+                </dl>
+                <dl>
+                    <dt>军事新闻</dt>
+                    <dd>1军事新闻11111</dd>
+                    <dd>2军事新闻22222</dd>
+                    <dd>3军事新闻33333</dd>
+                    <dd>4军事新闻44444444</dd>
+                    <dd>5军事新闻55555</dd>
+                    <dd>6军事新闻666666</dd>
+                    <dd>7军事新闻777777</dd>
+                    <dd>8军事新闻8888888</dd>
+                    <dd>9军事新闻9999999</dd>
+                    <dd>11军事新闻1111</dd>
+                    <dd>22军事新闻2222</dd>
+                    <dd>33军事新闻3333</dd>
+                    <dd>44军事新闻4444444</dd>
+                    <dd>55军事新闻5555</dd>
+                    <dd>66军事新闻66666</dd>
+                    <dd>77军事新闻77777</dd>
+                    <dd>88军事新闻888888</dd>
+                    <dd>99军事新闻999999</dd>
+                </dl>
+            </div>
+        </section>
+        <footer>左右滑动可切换新闻版块</footer>
+    </div>
+</body>
+</html>

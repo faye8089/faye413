@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>移动端项目</title>
+    <script type="text/javascript">
+        (function(){
+            var html=document.documentElement;
+            html.style.fontSize=html.clientWidth/15+'px';
+            document.addEventListener('touchstart',function(ev){
+                ev.preventDefault();
+            })
+        })();
+    </script>
+</head>
+<style>
+    body{
+        margin:0;
+    }
+    .wrap{
+        height:4.68rem;
+        position:relative;
+    }
+    .list{
+        padding:0;
+        margin:0;
+        width:400%;
+        position:absolute;
+        left:0;
+        top:0;
+        list-style:none;
+    }
+    .list li{
+        float:left;
+        width:15rem;
+    }
+    .list img{
+        width:15rem;
+        display: block;
+    }
+    nav{
+        width:15rem;
+        height:10px;
+        position:absolute;
+        bottom:5px;
+        z-index:1;
+        text-align: center;
+    }
+    nav a{
+        width:15px;
+        height:15px;
+        display: inline-block;
+        background: red;
+        border-radius: 50%;
+        vertical-align: top;
+    }
+ nav a.active{
+     background:#fff;
+ }
+</style>
+<body>
+    <section class="wrap">
+        <ul class="list">
+            <li>
+                <img src="images/ipone1/01.jpg" alt="01.jpg">
+            </li>
+            <li>
+                <img src="images/ipone1/02.jpg" alt="02.jpg">
+            </li>
+            <li>
+                <img src="images/ipone1/03.jpg" alt="03.jpg">
+            </li>
+            <li>
+                <img src="images/ipone1/04.jpg" alt="04.jpg">
+            </li>
+        </ul>
+        <nav>
+            <a href="javascript:;" class="active"></a>
+            <a href="javascript:;" ></a>
+            <a href="javascript:;" ></a>
+            <a href="javascript:;" ></a>
+        </nav>
+    </section>
+    <script>
+        var wrap=document.querySelector('.wrap');
+        var list=document.querySelector('.list');
+        var a=document.querySelectorAll('a');
+        var disX=0;
+        var listL=0;
+        w=wrap.clientWidth;
+
+        list.addEventListener('touchstart',start);
+        list.addEventListener('touchmove',move);
+        list.addEventListener('touchend',end);
+        function start(ev){
+            var ev=ev.changedTouches[0];
+            disX=ev.pageX;
+            listL=this.offsetLeft;
+
+
+        }
+        function move(ev){
+            var ev=ev.changedTouches[0];
+            list.style.left=ev.pageX-(disX-listL)+'px';
+
+        }
+        function end(){
+            var num=Math.random(list.offsetLeft/w);
+            list.style.transition='0.5s';
+            list.style.left=num*w+'px';
+        }
+
+    </script>
+</body>
+</html>

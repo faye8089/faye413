@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>VUE | leave</title>
+    <link rel="stylesheet" href="./plugs/bootstrap.css"/>
+
+    <style>
+        [v-cloak]{display:none;}
+    </style>
+
+</head>
+<body>
+    <div id="leave">
+        <!--<div>{{Date.now()}}</div>-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="title" class="control-label">标题</label>
+                            <input type="text" class="form-control" id="title" v-model="title"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">内容</label>
+                            <textarea class="form-control" v-model="content"></textarea>
+                        </div>
+                        <div class="form-group">
+                           <button type="button" class="btn btn-primary" @click="leave">添加留言</button>
+                        </div>
+                    </form>
+                    <ul class="list-group" v-cloak>
+                        <li class="list-group-item" v-for="item in lists">
+                            <p v-color="msg">{{item.title}}</p>
+                            <p v-colorCont="cont">{{item.content}}</p>
+                            <p>{{item.time | date}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./plugs/vue.js"></script>
+    <script src="./plugs/vue-resource.min.js"></script>
+
+    <script>
+        Vue.directive('color',function(el,binding){
+            el.style.color=binding.value;
+        });
+
+        Vue.directive('colorcont',function(el,binding){
+            el.style.color=binding.value;
+        });
+
+//        Vue.directive({
+//            color:function(el,binding){
+//                el.style.color=binding.value;
+//            },
+//            colorcont:function(el,binding){
+//                el.style.color=binding.value;
+//            }
+//        });
+
+        Vue.filter('date',function (input){
+            var d=new Date(input);
+//            return d.getFullYear()+'-'+toDub(d.getMonth()+1)+'-'+toDub(d.getDate())+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+            var strDate=d.getFullYear()+'-'+toDub(d.getMonth()+1)+'-'+toDub(d.getDate())+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+            /*return `${d.getFullYear()}-${toDub(d.getMonth()+1)}-${toDub(d.getDate())} ${toDub(d.getHours())}时${toDub(d.getMinutes())}分${toDub(d.getSeconds())}秒`*/
+            return strDate;
+        });
+
+        function toDub(n)
+        {
+            return n<10 ? '0'+n : ''+n;
+        }
+
+
+        var vm=new Vue({
+            el:'#leave',
+            data:{
+                title:'',
+                content:'',
+                lists:[
+                    {title:'努力就会有收获',content:'你必须比任何人努力100倍',time:1494925115603},
+                    {title:'没事要多学学五笔',content:'打字快也算是生存技能，加油，不要放弃',time:1494925144804}
+                  ],
+                msg:'red',
+                cont:'blue'
+            },
+            methods:{
+                leave:function(){
+                   this.lists.push({
+                       title:this.title,
+                       content:this.content,
+                       time:Date.now()
+                   });
+                    this.title=this.content='';
+                }
+            }
+        });
+    </script>
+    <script>
+        Vue.directive('color',function(el,binding){
+            el.style.color=binding.value;
+        });
+
+        Vue.directive('colorcont',function(el,binding){
+            el.style.color=binding.value;
+        });
+
+
+        Vue.filter('date',function (input){
+            var d=new Date(input);
+            var strDate=d.getFullYear()+'-'+toDub(d.getMonth()+1)+'-'+toDub(d.getDate())+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
+            return strDate;
+        });
+
+        function toDub(n)
+        {
+            return n<10 ? '0'+n : ''+n;
+        }
+
+
+        var vm=new Vue({
+            el:'#leave',
+            data:{
+                title:'',
+                content:'',
+                lists:[
+                    {title:'努力就会有收获',content:'你必须比任何人努力100倍',time:1494925115603},
+                    {title:'没事要多学学五笔',content:'打字快也算是生存技能，加油，不要放弃',time:1494925144804}
+                ],
+                msg:'red',
+                cont:'blue'
+            },
+            methods:{
+                leave:function(){
+                    this.lists.push({
+                        title:this.title,
+                        content:this.content,
+                        time:Date.now()
+                    });
+                    this.title=this.content='';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

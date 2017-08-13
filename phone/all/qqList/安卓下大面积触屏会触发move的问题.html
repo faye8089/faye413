@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" >
+    <title>安卓下大面积触屏会触发move的问题</title>
+   <!-- 1.拖动时，只有字走
+                解决方法：要给拖动的元素加position:relative;
+        2.安卓下大面积触屏会触发move的问题
+                解决方法：判断两次间隔
+    -->
+    <style>
+        *{margin:0; padding:0;}
+        #box{width:300px;
+            height:300px;
+            font-size:20px;
+            word-break: break-all;
+            background: red;
+            color:#fff;
+            }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p></p>
+        <p></p>
+    </div>
+    <script>
+
+        (function(){
+            document.addEventListener("touchstart",function(e){
+                e.preventDefault();
+            });
+            var box=document.querySelector('#box');
+            var child=box.children;
+            var lastPoint={};
+            box.addEventListener('touchstart',function(e){
+                var touch= e.changedTouches[0];
+
+                lastPoint={
+                    x:Math.round(touch.pageX),
+                    y:Math.round(touch.pageY)
+                };
+                child[0].innerHTML='x:'+lastPoint.x+'<br/>y:'+lastPoint.y;
+            });
+            box.addEventListener('touchmove',function(e){
+                var touch= e.changedTouches[0];
+                var nowPoint={
+                    x:Math.round(touch.pageX),
+                    y:Math.round(touch.pageY)
+                };
+                if(lastPoint.x==nowPoint.x && lastPoint.y==nowPoint.y ){
+                    return;
+                }
+                child[1].innerHTML='x:'+nowPoint.x+'<br/>y:'+nowPoint.y;
+                lastPoint.x=nowPoint.x;
+                lastPoint.y=nowPoint.y;
+            })
+        })();
+    </script>
+</body>
+</html>

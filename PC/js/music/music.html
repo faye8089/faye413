@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <title>手机-音乐播放器</title>
+  <link href="img/iconfont/iconfont.css">
+  <script>
+	
+		document.getElementsByTagName('html')[0].style.fontSize=document.documentElement.clientWidth/10+'px';
+	
+  </script>
+  
+  <style>
+	*{margin:0; padding:0;}
+	body{
+		width:10rem;
+		height:2rem;
+		overflow:hidden;
+		background:url('img/bg.jpg');
+	}
+	header{
+		width:10rem;
+		height:2rem;
+		text-align:center;
+		
+	}
+	header h3{
+		font-size:0.5rem;
+		color:#fff;
+		margin-top:0.8rem;
+	}
+	header p{
+		font-size:0.3rem;
+		color:#fff;
+		margin-top:0.4rem;
+	}
+	.singer{
+		width:8rem;
+		height:8rem;
+		border:1px solid #fff;
+		margin:auto;
+		border-radius:50%;
+	}
+	.singer div{
+		width:7.6rem;
+		height:7.6rem;
+		background:rgba(255,255,255,0.5);
+		margin:0.2rem;
+		border-radius:50%;
+	}
+	.rotate{
+		animate:rot 10s linear infinite;/*自定义动画：动画名称 时间 匀速 无限重复*/
+	}
+	@keyframes rot{
+		to{
+			transform:rotate(360deg)
+		}
+	}
+	.singer div img{
+		width:7rem;
+		height:7rem;
+		border-radius:50%;
+		margin:0.3rem;	
+	}
+	.progress{
+		width:9rem;
+		height:0.1rem;
+		background:#c03;
+		margin:1rem auto;
+	}
+	.bg{
+		width:0rem;
+		height:0.1rem;
+		background:#0fg;
+	}
+	.bar{
+		width:0.2rem;
+		height:0.2rem;
+		background:#fff;
+		border-radius:50%;
+		transform:translate(0rem,-0.15rem);
+	}
+	.btn{
+		width:8rem;
+		margin:auto;
+	}
+	.btn div{
+		float:left;
+		margin:0.5rem;	
+		font-size:1.6rem;
+		color:#fff;
+
+	}
+	.pause{display:none;}
+	@font-face {font-family: 'iconfontyyy';
+		src: url('img/iconfont/iconfont.eot');
+		src: url('img/iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+		url('img/iconfont/iconfont.woff') format('woff'),
+		url('img/iconfont/iconfont.ttf') format('truetype'),
+		url('img/iconfont/iconfont.svg#iconfontyyy') format('svg');
+     }
+
+	 .iconfontyyy{
+		font-family:"iconfontyyy" !important;
+		font-size:16px;font-style:normal;
+		-webkit-font-smoothing: antialiased;
+		-webkit-text-stroke-width: 0.2px;
+		-moz-osx-font-smoothing: grayscale;
+		}
+  </style>
+ </head>
+ <body>
+	<header>
+		<h3>刚好遇见你</h3>
+		<p>李玉刚</p>
+	</header>
+	<section>
+		<div class="singer">
+			<div>
+				<img src="img/gang.jpg" />
+			</div>
+		</div>
+	</section>
+	<section class="progress">
+		<div class="bg"></div>
+		<div class="bar"></div>
+	</section>
+	<section class="btn">
+		<div class="prev iconfontyyy">&#xe6de;</div>
+		<div class="paly iconfontyyy">&#xe60d;</div>
+		<div class="pause iconfontyyy">&#xe6ad;</div>
+		<div class="next iconfontyyy">&#xe6dd;</div>		
+	</section>
+
+	<audio src="img/王菲 - 爱不可及.mp3" id="myMusic"></audio>
+	<script>
+		window.onload=function(){
+			var myMusic=document.getElementById('myMusic');
+			var oProgress=document.getElementsByClassName('progress')[0];
+			var oBg=document.getElementsByClassName('bg')[0];
+			var oBar=document.getElementsByClassName('bar')[0];
+			var oPaly=document.getElementsByClassName('paly')[0];
+			var oPause=document.getElementsByClassName('pause')[0];
+
+			oPaly.onclick=function(){
+				myMusic.play();
+				this.style.display='none';
+				oPause.style.display='block';
+			};
+			oPause.onclick=function(){
+				myMusic.pause();
+				this.style.display='none';
+				oPaly.style.display='block';
+			};
+		};
+	</script>
+ </body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640,user-scalable=no">
+    <title>美食开吃了</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
+
+</head>
+<body>
+    <script>
+        document.body.style.height=view().h+'px';
+    </script>
+    <section class="page pageShow" id="welcome" style="background:url(img/bg.png) repeat">
+        <div class="tree">
+            <img src="img/food.jpg" alt="food">
+            <div class="welcome2">
+                <img src="img/title.jpg" alt="title">
+                <span class="shake"></span>
+            </div>
+            <img src="img/title2.jpg" alt="title2" class="title2">
+            <span class="cloud"></span>
+            <span class="cloud"></span>
+            <span class="cloud"></span>
+        </div>
+        <h1 id="logo">
+            <img src="img/logo.jpg" alt="logo">
+        </h1>
+    </section>
+    <script>
+        fnLoad();
+    </script>
+    <section class="page" id="over" style="background:url(img/bg.png) repeat">
+        <div class="tree">
+            <img src="img/food.jpg" alt="food">
+            <div class="welcome2">
+                <img src="img/title.jpg" alt="title">
+                <span class="shake"></span>
+            </div>
+            <img src="img/fan.png" alt="title2" class="title2">
+            <span class="cloud"></span>
+            <span class="cloud"></span>
+            <span class="cloud"></span>
+        </div>
+        <input class="btn submit" type="button" value="提交">
+    </section>
+    <section class="page" id="form">
+        <section class="tags" id="formTag">
+            <h2>给视频添加标签</h2>
+            <label>
+                <input type="radio" name="tags2" value="服务好">
+                <span>服务好</span>
+            </label>
+            <label>
+                <input type="radio" name="tags2" value="景色赞">
+                <span>上菜快</span>
+            </label>
+            <label>
+                <input type="radio" name="tags2" value="千篇一律">
+                <span>味道棒</span>
+            </label>
+            <label>
+                <input type="radio" name="tags2" value="素质普遍有所提高">
+                <span>有家里的味道</span>
+            </label>
+            <label>
+                <input type="radio" name="tags2" value="看人海">
+                <span>非常好吃哟</span>
+            </label>
+            <label>
+                <input type="radio" name="tags2" value="挤爆了">
+                <span>挤爆了</span>
+            </label>
+            <label>
+                <input type="radio" name="tags2" value="素质普遍有所提高">
+                <span>值得回忆的美食</span>
+            </label>
+            <label>
+                <input type="radio" name="tags2" value="其他不来了">
+                <span>聚餐首选</span>
+            </label>
+            <label>
+                <input type="radio" name="tags2" value="挤爆了">
+                <span>千万不可错过的美食</span>
+            </label>
+            <label>
+                <input type="radio" name="tags" value="挤爆了">
+                <span>美食的天下</span>
+            </label>
+        </section>
+        <textarea  cols="30" rows="5" class="formText" placeholder="(选填，说点什么呢。。。)"></textarea>
+        <input type="tel" class="formText" placeholder="(选填，说点什么呢。。。)">
+        <input type="button" value="上传" class="btn">
+    </section>
+    <section class="page" id="news">
+        <img src="img/banner01.jpg" alt="banner01" width="640">
+        <h2>请上传文件哦</h2>
+        <section class="file">
+            <label>
+                <input type="file">
+                <span>导入视频</span>
+            </label>
+            <label>
+                <input type="file">
+                <span>上传照片</span>
+            </label>
+        </section>
+        <p class="info"></p>
+    </section>
+    <section class="page" id="mask"></section>
+    <section class="page pageShow" id="index">
+        <section class="scrollWrap">
+            <section id="tabPic">
+                <ul id="picList">
+                    <li>
+                        <img src="img/banner01.jpg" alt="banner01">
+                    </li>
+                    <li>
+                        <img src="img/banner02.jpg" alt="banner02">
+                    </li>
+                    <li>
+                        <img src="img/banner03.jpg" alt="banner03">
+                    </li>
+                    <li>
+                        <img src="img/banner04.jpg" alt="banner04">
+                    </li>
+                    <li>
+                        <img src="img/banner05.jpg" alt="banner05">
+                    </li>
+                </ul>
+                <section class="picMask">
+                    <div id="txtBox">
+                        <p class="active">
+                            我最爱吃的美食，非他莫属
+                        </p>
+                        <p>
+                            爱上舌尖的味道
+                        </p>
+                        <p>
+                            让你的胃暖暖的
+                        </p>
+                        <p>
+                            好吃不贵，吃完还想吃
+                        </p>
+                        <p>
+                            美食，我在这里等着你
+                        </p>
+                    </div>
+                    <nav>
+                        <a href="javascript:;" class="active"></a>
+                        <a href="javascript:;"></a>
+                        <a href="javascript:;"></a>
+                        <a href="javascript:;"></a>
+                        <a href="javascript:;"></a>
+                    </nav>
+                </section>
+            </section>
+            <!--方法一
+            <a href="javascript:;" class="newsBtn">
+               <em>美食天下</em>
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>-->
+            <!--方法二-->
+            <a href="javascript:;" class="newsBtn2">美食线索</a>
+            <section id="score">
+                <h2>给商家评分</h2>
+                <ul class="scoreList">
+                    <li>
+                        <span>综合印象</span>
+                        <nav>
+                            <a href="javascript:;" ></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                        </nav>
+                        <input type="hidden" value="0">
+                    </li>
+                    <li>
+                        <span>服务指数</span>
+                        <nav>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                        </nav>
+                        <input type="hidden" value="0">
+                    </li>
+                    <li>
+                        <span>消费指数</span>
+                        <nav>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                            <a href="javascript:;"></a>
+                        </nav>
+                        <input type="hidden" value="0">
+                    </li>
+                </ul>
+            </section>
+            <section class="tags" id="indexTag">
+                <h2>给美食添加标签</h2>
+                <label>
+                    <input type="radio" name="tags" value="味道赞">
+                    <span>味道赞</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="价格便宜">
+                    <span>价格便宜</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="很好吃">
+                    <span>很好吃</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="老少皆宜">
+                    <span>老少皆宜</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="季节菜值得吃">
+                    <span>季节菜值得吃</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="不可辜负的美食">
+                    <span>不可辜负的美食</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="带有回忆的味道">
+                    <span>带有回忆的味道</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="跟闺蜜一起来品尝">
+                    <span>跟闺蜜一起来品尝</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="一个字，好吃">
+                    <span>一个字，好吃</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="吃的很满足">
+                    <span>吃的很满足</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="口水的诱惑">
+                    <span>口水的诱惑</span>
+                </label>
+                <label>
+                    <input type="radio" name="tags" value="吃起来">
+                    <span>吃起来</span>
+                </label>
+            </section>
+            <p class="info"></p>
+            <input class="btn submit" type="button" value="提交">
+        </section>
+    </section>
+
+</body>
+</html>

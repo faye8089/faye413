@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>图片拖拽</title>
+  <style>
+	*{margin:0; padding:0;}
+	#wrap{
+		width:500px;
+		height:300px;
+		margin:200px auto;
+		box-shadow:0 0 10px #000;
+		font-family:"Microsoft YaHei";
+	}
+	#box{
+		position:relative;
+		width:500px;
+		height:300px;
+	}
+	#box span{
+		display:block;
+		width:192px;
+		margin:0 auto;
+		line-height:350px;	
+	}
+	#box p{
+	   position:absolute;
+	   left:0; 
+	   bottom:-37px;	  
+	   width:75px; 
+	   height:25px;
+	}
+
+	#box  img{
+		display:inline-block;
+		width:100px; 
+		height:100px;
+	}
+	#bin{
+		width:150px;
+		height:35px;
+		margin:10px auto;
+		background:#ddd;
+		text-align:center;
+		line-height:35px;
+	}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="box">
+			<span>将文件拖放到这！！！</span>
+			<p>共0张图片</p>
+		</div>
+		<div id="bin">回收站</div>
+	</div>
+	<script>
+		window.onload=function(){
+			var oBox=document.getElementById('box');
+			var oSpan=oBox.getElementsByTagName('span')[0];
+			var oP=document.getElementsByTagName('p')[0];
+			var oBin=document.getElementById('bin');
+			var aImgs=document.getElementsByTagName('img');
+
+			oBox.ondragenter=function(ev){ //进入目标元素触发
+				var ev=ev || window.event;				
+			    ev.preventDefault();
+				oSpan.style.display='none';				
+			};
+			oBox.ondragover=function(ev){//在目标元素上连续触发
+				var ev=ev || window.event;				
+			    ev.preventDefault();
+			};
+			oBox.ondrop=function(ev){//在目标元素释放鼠标触发
+				var ev=ev || window.event;				
+			    ev.preventDefault();			
+				var imgFile=ev.dataTransfer.files;//先获取外部文件
+				//console.log(imgFile[0].type);
+				for(var i=0; i<imgFile.length; i++){
+					if(imgFile[i].type.indexOf('image')!=-1){
+						var imgRead=new FileReader();//新建一个文件，读取文件信息
+						imgRead.readAsDataURL(imgFile[i]);//要读取的文件对象
+						//console.log(imgRead);
+						imgRead.onload=function(){
+						   var	aImg=new Image();
+						   aImg.src=this.result;
+						   //console.log(aImg.src);
+						   oBox.appendChild(aImg);
+						   if(aImgs){
+							for(var j=0; j<aImgs.length; j++){
+								aImgs[j].ondragstart=function(ev){ //拖拽开始
+                                    var ev=ev || window.event;			
+			                        img=ev.target;
+									//console.log(img);
+								};
+							}
+						   }
+						   oBin.ondragover=function(ev){//在目标元素上连续触发
+							 var ev=ev || window.event;
+							 ev.preventDefault();	
+							 this.style.background='red';
+							
+						   };
+
+						   oBin.ondrop=function(ev){//在目标元素上释放鼠标触发
+							 var ev=ev || window.event;
+							 ev.preventDefault();						 
+							 if(img){								 
+								img.parentNode.removeChild(img);
+							 }
+							   
+								
+						   };
+						 
+						};
+					}else{
+						alert('请插入图片');
+					}
+				}
+			};
+		};
+	</script>
+ </body>
+</html>

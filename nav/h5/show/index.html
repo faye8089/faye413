@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>展示</title>
+    <style>
+        *{margin:0; padding:0;}
+        html,body{height:100%;}
+        body{background: #999;}
+        #box{
+            height:100%;
+            background: url("img/bg.png") no-repeat center;
+            background-size: 1800px 100%;
+            position:relative;
+            transform-style:preserve-3d;
+            perspective: 800px;
+
+        }
+        img{
+            vertical-align: top;
+            border:none;
+        }
+        #box img{
+            width:300px;
+            height:200px;
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin:-100px 0 0 -150px;
+            transition:.7s ease-in-out;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="img/0.jpg" alt="0"/>
+        <img src="img/1.jpg" alt="1"/>
+        <img src="img/2.jpg" alt="2"/>
+        <img src="img/3.jpg" alt="3"/>
+        <img src="img/4.jpg" alt="4"/>
+        <img src="img/5.jpg" alt="5"/>
+        <img src="img/6.jpg" alt="6"/>
+    </div>
+    <script>
+        window.onload=function(){
+            var oBox=document.getElementById("box");
+            var aImg=oBox.getElementsByTagName('img');
+            var now=3;
+            var target;
+            var onoff=true;
+            setTimeout(function(){
+                Tab(now);
+            },100);
+
+            for(var i=0; i<aImg.length; i++){
+                aImg[i].index=i;
+                aImg[i].onclick=function(){
+                    if(!onoff){
+                        return;
+                    }
+                    onoff=false;
+                    target=this.index;
+                    if(target>now){
+                        if(target-now<=3){
+                            goNext();
+                        }else{
+                            goPrev();
+                        }
+                    }else{
+                        if(target+7-now<=3) {
+                            goNext();
+                        }else{
+                            goPrev();
+                        }
+                    }
+
+                }
+            }
+
+            function goNext()  //切换下一张图
+            {
+                now++;
+                if(now>aImg.length-1){
+                    now=0;
+                }
+                Tab(now);
+                if(now==target)  //运动完成后
+                {
+                    onoff=true;
+                    return;
+                }
+                setTimeout(function(){
+                    goNext();
+                },700);
+
+
+            }
+
+            function goPrev()  //切换上一张图
+            {
+                now--;
+                if(now<0){
+                    now=6;
+                }
+                Tab(now);
+                if(now==target)
+                {
+                    onoff=true;
+                    return;
+                }
+                setTimeout(function(){
+                    goPrev();
+                },700);
+
+
+            }
+            function Tab(n)
+            {
+                for(var i=0; i<3; i++){
+                    var Left=n-1-i;
+                    if(Left<0){
+                        Left=Left+7;
+                    }
+                    aImg[Left].style.transform="translateX("+(-150*(i+1))+"px) translateZ("+(200-i*100)+"px) rotateY(30deg)";
+                    var Right=n+1+i;
+                    if(Right>6){
+                        Right=Right-7;
+                    }
+                    aImg[Right].style.transform="translateX("+(150*(i+1))+"px) translateZ("+(200-i*100)+"px) rotateY(-30deg)";
+                }
+
+                aImg[n].style.transform="translateZ(300px)";
+            }
+        }
+    </script>
+</body>
+</html>

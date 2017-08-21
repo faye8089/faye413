@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>折扇效果</title>
+    <style>
+        *{margin:0; padding:0;}
+        body{background: rgb(254,176,193);}
+        #box{
+            width:1200px;
+            height:600px;
+            background: url("img/e3e.png")no-repeat;
+            position:relative;
+            margin:20px auto;
+        }
+        #box div{
+            width:300px;
+            height:80px;
+            border-radius: 9px;
+            position:absolute;
+            left:755px;
+            top:300px;
+            background:url("img/111.png")  no-repeat 180px 12px;
+            padding-right:20px;
+            -webkit-transform-origin: 35px 50px;
+            -moz-transform-origin: 35px 50px;
+            -ms-transform-origin: 35px 50px;
+            -o-transform-origin: 35px 50px;
+            transform-origin: 35px 50px;transition:1s;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        #box div:nth-of-type(1){
+            background-color: #417191;
+        }
+        #box div:nth-of-type(2){
+            background-color: #6aff9f;
+        }
+        #box div:nth-of-type(3){
+            background-color: #ff1472;
+        }
+        #box div:nth-of-type(4){
+            background-color: #2cffe9;
+        }
+        #box div:nth-of-type(5){
+            background-color: #beff40;
+        }
+        #box div:nth-of-type(6){
+            background-color: orange;
+        }
+        #box div:nth-of-type(7){
+            background-color: red;
+        }
+        #box div:nth-of-type(8){
+            background-color: #fffc63;
+        }
+        #box div:nth-of-type(9){
+            background-color: blue;
+        }
+        #box div:nth-of-type(10){
+            background-color : #69adff;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+        window.onload=function(){
+            var oBox=document.getElementById('box');
+            var aDiv=oBox.getElementsByTagName('div');
+            var bFlag=true;
+
+            setTimeout(open,300);
+            aDiv[aDiv.length-1].onclick=function(){
+                if(bFlag){
+                    close();
+                }else{
+                    open();
+                }
+                bFlag=!bFlag;
+            };
+
+            otherOpen();
+            function otherOpen()
+            {
+                /*
+                * 8. 270 214+56    规律：1.每个都相差17
+                * 7. 270 231+39         2.this.index*17-80   为了得到 56或者39或者22
+                * 6. 270 248+22           用当前索引*17等于的值 减去原来的数 得80
+                * 5. 270 265+5           3.上面的公式就是偏移量
+                * 4. 270 282-12          4.aDiv[i].style.transform="rotate("+(355-                                                   (i*18)+this.index*17-80-10)+"deg)";
+                * 3. 270 299-29              (i*18)是每一个div的位置差  18值越大                                                  div间距越大
+                * 2. 270 316-46              80-10)+"deg)";   -10是改偏移量
+                * 1. 270 333-63
+                * 0. 270 350-80
+                *
+                * */
+
+                for(var i=0; i<aDiv.length-1; i++)
+                {
+                    aDiv[i].index=i;
+                    aDiv[i].onclick=function(){
+
+                        for(var i=0; i<aDiv.length; i++)
+                        {
+                            if(i<this.index){
+                                aDiv[i].style.transform="rotate("+(355-(i*16)+this.index*17-80+20)+"deg)";
+                            }
+                            if(i>this.index){
+                                aDiv[i].style.transform="rotate("+(355-(i*16)+this.index*17-80-20)+"deg)";
+                            }
+                        }
+                        aDiv[this.index].style.transform="rotate("+(355-(this.index*18)+this.index*17-80)+"deg)";
+                    }
+                }
+            }
+
+
+
+
+            function open()
+            { //扇子打开
+                for(var i=0; i<aDiv.length; i++)
+                {
+                    aDiv[i].style.transform="rotate("+(355-(i*18))+"deg)";
+                }
+            }
+
+            function close()
+            { //扇子合上
+                for(var i=0; i<aDiv.length; i++)
+                {
+                    aDiv[i].style.transform="rotate(0)";
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿[
+  {
+    "username":"诺基亚11111",
+    "new_message":"新款（TA-1010）移动 老人机老年机手机 备用机（黑色)",
+    "date_time":"1402758577000"
+  },
+  {
+    "username":"蒙帝鸿运手机专营店2222",
+    "new_message":"32G 玫瑰金 ",
+    "date_time":1503375132000
+  },
+  {
+    "username":"三星 Galaxy C9Pro33333",
+    "new_message":"墨玉黑",
+    "date_time":1174451900000
+  },
+  {
+    "username":"努比亚nubia Z17 无边框 曜石黑4444",
+    "new_message":"充值50送50活动，额外赠送15元话费将在充值后到账，相当于赠送了4500MB流量！",
+    "date_time":1256679542000
+  },
+  {
+    "username":"小米6 亮黑色 6GB+ 64GB 全网通55555",
+    "new_message":"小米性能怪兽，骁龙835 旗舰处理器， 6GB大内存！！  ",
+    "date_time":1470610965000
+  },
+  {
+    "username":"魅族 魅蓝note6新品",
+    "new_message":"正品行货，苏宁直发！",
+    "message_number":22,
+    "date_time":1462395955000
+  },
+  {
+    "username":"全网通版 6GB+64GB 亮黑色 7777",
+    "new_message":"移动联通电信4G手机 双卡双待,充值50送50活动，额外赠送15元话费将在充值后到账，相当于赠送了4500MB流量！",
+    "message_number":42,
+    "date_time":1262664318000
+  },
+  {
+    "username":"华为 P10 全网通版 88888",
+    "new_message":"【限时直降300】",
+    "date_time":640461044000
+  },
+  {
+    "username":"华为P9钻雕金 全网通999999999",
+    "new_message":"1元300MB用完自动叠加",
+    "date_time":608436320000
+  }
+]
+

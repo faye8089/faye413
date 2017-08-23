@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>放大百叶窗效果</title>
+    <style>
+        *{margin:0; padding:0;}
+        html,body{height:100%;}
+        .box{
+            width:100%;
+            background: url("img/bg.png") no-repeat center 0;
+        }
+        .wrap{width:980px; margin:0 auto; overflow: hidden;}
+        .fl{float:left; display:inline-block;}
+        .clearfix:after{display: block; content: ''; clear:both;}
+        .clearfix{zoom:1;}
+        a{text-decoration: none; color:#000;}
+        li{list-style:none;}
+
+
+        #small{width:180px; height:180px; overflow: hidden; position:relative; margin:50px ; border:2px solid rgb(43,184,170);}
+        #small .smallBox{display:none;}
+        #small .smallBox.active{display:block;}
+        #small .smallBox img{display: inline-block; vertical-align: middle; width:100%; height:100%;}
+        #small span{width:100px; height:100px; background: yellow; opacity: .5; filter:alpha(opacity=50); position:absolute; left:0; top:0; display: none;}
+
+        #big{width:500px; height:500px; position:absolute; left:464px; top:140px; overflow: hidden; border:2px solid rgb(43,184,170); display:none; background: red; z-index:2;}
+        #big .bigBox{width:500px; height:500px; }
+        #big .bigBox img{position:absolute; left:0; top:0; }
+
+
+        #middle{width:324px; height:100px;}
+        #middle a{float:left; width:100px; height:100px; border:4px solid #fff;}
+        #middle a>img{display:inline-block; vertical-align: top; width:100%; height:100%; }
+        #middle a.active{border-color:rgb(43,184,170);}
+
+        #listBox1,#listBox2{width:288px; float:left; border-top:1px solid rgb(43,184,170); margin:20px; }
+        #listBox1 li,#listBox2 li{width:288px; height:40px; line-height:40px; position:relative;border-bottom:1px  dashed rgb(43,184,170); overflow:hidden;
+        background: url("img/dist.gif") no-repeat 0 20px; }
+        #listBox1 li div,#listBox2 li div{position:absolute; left:10px; top:-40px;}
+        #listBox1 li p,#listBox2 li p{height:40px; line-height:40px; }
+        #listBox1 li p span,#listBox2 li p span{float:left;width:205px; overflow:hidden; text-overflow: ellipsis; white-space: nowrap;font-size:14px;   }
+        #listBox1 li p em,#listBox2 li p em{width:70px; float:right; font-style:normal; font-size:11px; color:#666;}
+
+    </style>
+    <script src="move.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        window.onload=function() {
+          (function(){
+                var oSmall=document.getElementById('small');
+                var aSmallBox=oSmall.getElementsByTagName('div');
+                var oSpan=oSmall.getElementsByTagName('span')[0];
+
+
+                var oMiddle=document.getElementById('middle');
+                var aMiddleMox=oMiddle.getElementsByTagName('a');
+
+                var oBig=document.getElementById('big');
+                var oBigBox=oBig.getElementsByClassName('bigBox')[0];
+                var oImg=oBigBox.getElementsByTagName('img')[0];
+
+                for(var i=0; i<aMiddleMox.length; i++){
+                    aMiddleMox[i].index=i;
+                    aMiddleMox[i].onclick=function(){
+                        for(var i=0; i<aMiddleMox.length; i++){
+                            aMiddleMox[i].className='';
+                            aSmallBox[i].className='smallBox';
+                        }
+                        this.className="active";
+                        aSmallBox[this.index].className="smallBox active";
+
+                        oImg.src='img/b'+(this.index+1)+'.jpg';
+
+                    }
+                }
+
+                oSmall.onmouseenter=function(){
+                    oSpan.style.display='block';
+                    oBig.style.display='block';
+                };
+
+                oSmall.onmouseleave=function(){
+                    oSpan.style.display='none';
+                    oBig.style.display='none';
+                };
+
+                oSmall.onmousemove=function(ev){
+                    var ev=ev || window.event;
+                    var left=ev.clientX-oSmall.offsetLeft-oSpan.offsetWidth/2;
+                    var top=ev.clientY-oSmall.offsetTop-oSpan.offsetHeight/2;
+                    if(left<0){
+                        left=0;
+                    }else if(left>oSmall.offsetWidth-oSpan.offsetWidth){
+                        left=oSmall.offsetWidth-oSpan.offsetWidth;
+                    }
+
+                    if(top<0){
+                        top=0;
+                    }else if(top>oSmall.offsetHeight-oSpan.offsetHeight){
+                        top=oSmall.offsetHeight-oSpan.offsetHeight;
+                    }
+
+                    oSpan.style.left=left+'px';
+                    oSpan.style.top=top+'px';
+
+                    var scaleX=left/(oSmall.offsetWidth-oSpan.offsetWidth);
+                    var scaleY=top/(oSmall.offsetHeight-oSpan.offsetHeight);
+
+                    var maxL=oImg.offsetWidth-oBigBox.offsetWidth;
+                    var maxT=oImg.offsetHeight-oBigBox.offsetHeight;
+
+
+                    oImg.style.left=-maxL*scaleX+'px';
+                    oImg.style.top=-maxT*scaleY+'px';
+                };
+            })();
+            (function(){
+                var oListBox1=document.getElementById('listBox1');
+                var oListBox2=document.getElementById('listBox2');
+                $.ajax({
+                    type:'get',
+                    url:"data/data.txt",
+                    error:function(){
+                        alert('亲，请求失败！');
+                    },
+                    success:function(data){
+                      var arr = JSON.parse(data);
+
+                        function getLocalTime(time){
+                            var oDate=new Date();
+                            oDate.setTime(time);
+                            var sDate=oDate.getFullYear()+'-'+toD(oDate.getMonth()+1)+'-'+toD(oDate.getDate());
+
+                            return sDate;
+                        }
+
+                        function toD(n)
+                        {
+                            return n<10 ? '0'+n: ''+n;
+                        }
+
+
+                      for(var i=0; i<arr.length; i++)
+                      {
+
+
+                     var time=getLocalTime(arr[i].date_time);
+
+
+
+                          var oLi=document.createElement('li');
+                          /*oLi.innerHTML=' <div><p>'+arr[i].username+'</p><span>'+arr[i].date_time+'</span><p>'+arr[i].new_message+'</p><span>'+arr[i].date_time+'</span></div>';*/
+                          oLi.innerHTML='<li><div><p><span>'+arr[i].username+'</span><em>'+time+'</em></p><p><span>'+arr[i].new_message+'</span><em>'+time+'</em></p></div></li>';
+                          oListBox1.appendChild(oLi);
+                      }
+
+
+                    }
+                });
+                $.ajax({
+                    type:'get',
+                    url:"data/data2.txt",
+                    error:function(){
+                        alert('亲，请求失败！');
+                    },
+                    success:function(data){
+                        var arr = JSON.parse(data);
+
+                        function getLocalTime(time){
+                            var oDate=new Date();
+                            oDate.setTime(time);
+                            var sDate=oDate.getFullYear()+'-'+toD(oDate.getMonth()+1)+'-'+toD(oDate.getDate());
+
+                            return sDate;
+                        }
+
+                        function toD(n)
+                        {
+                            return n<10 ? '0'+n: ''+n;
+                        }
+
+
+                        for(var i=0; i<arr.length; i++)
+                        {
+
+
+                            var time=getLocalTime(arr[i].date_time);
+
+
+
+                            var oLi=document.createElement('li');
+                            /*oLi.innerHTML=' <div><p>'+arr[i].username+'</p><span>'+arr[i].date_time+'</span><p>'+arr[i].new_message+'</p><span>'+arr[i].date_time+'</span></div>';*/
+                            oLi.innerHTML='<li><div><p><span>'+arr[i].username+'</span><em>'+time+'</em></p><p><span>'+arr[i].new_message+'</span><em>'+time+'</em></p></div></li>';
+                            oListBox2.appendChild(oLi);
+                        }
+
+
+                    }
+                });
+
+            })();
+           (function(){
+                var oListBox1=document.getElementById('listBox1');
+                var oListBox2=document.getElementById('listBox2');
+                showList(oListBox1);
+
+                setTimeout(function(){
+                    showList(oListBox2);
+                },2000);
+
+
+                function showList(obj)
+                {
+                    var aDiv=obj.getElementsByTagName('div');
+                    var iNow=0;
+                    var timer=null;
+                    var bFlag=true;
+                    setInterval(function(){
+                        conBox();
+                    },4000);
+
+
+                    function conBox()
+                    {
+                        timer=setInterval(function(){
+                            if(iNow==aDiv.length){
+                                clearInterval(timer);
+                                iNow=0;
+                                bFlag=!bFlag;
+                            }else if(bFlag){
+                                startMove(aDiv[iNow],{top:0});
+                                iNow++;
+                            }else{
+                                startMove(aDiv[iNow],{top:-40});
+                                iNow++;
+                            }
+
+                        },200);
+                    }
+                }
+            })();
+
+
+
+
+        };
+    </script>
+
+</head>
+<body>
+    <div class="box">
+        <div class="wrap">
+            <div class="clearfix" style="margin-top:190px; background: #fff;" >
+                <div class="listLeft fl">
+                    <div id="small">
+                        <div class="smallBox active">
+                            <img src="img/s1.jpg" alt="s1"/>                                                </div>
+                        <div class="smallBox ">
+                            <img src="img/s2.jpg" alt="s2"/>                                                </div>
+                        <div class="smallBox">
+                            <img src="img/s3.jpg" alt="s3"/>                                                </div>
+                        <span></span>
+                    </div>
+                    <div id="middle">
+                        <div class="middleMox">
+                            <a href="javascript:;">
+                                <img src="img/m1.jpg" alt="m1"/>
+                            </a>
+                        </div>
+                        <div class="middleMox">
+                            <a href="javascript:;">
+                                <img src="img/m2.jpg" alt="m2"/>
+                            </a>
+                        </div>
+                        <div class="middleMox">
+                            <a href="javascript:;">
+                                <img src="img/m3.jpg" alt="m3"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="big">
+                        <div class="bigBox">
+                            <img src="img/b1.jpg" alt="b1"/>
+                        </div>
+                       <!-- <div class="bigBox">
+                            <img src="img/b1.jpg" alt="b1"/>
+                        </div>
+                        <div class="bigBox">
+                            <img src="img/b1.jpg" alt="b1"/>
+                        </div>-->
+                    </div>
+
+                </div>
+                <div class="listRight fl">
+                    <ul id="listBox1">
+                        <!--<li>
+                            <div>
+                                <p>
+                                    <span>11111111</span>
+                                    <em>454564564</em>
+                                </p>
+                                <p>
+                                    <span>11111111</span>
+                                    <em>454564564</em>
+                                </p>
+                            </div>
+                        </li>-->
+                    </ul>
+                    <ul id="listBox2">
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
